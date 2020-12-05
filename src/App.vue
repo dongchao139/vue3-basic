@@ -1,28 +1,36 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <h1>{{ count }}</h1>
-  <h3>{{ double }}</h3>
-  <button @click="increase">^=>+1</button>
+  <h1>{{ data.count }}</h1>
+  <h4>{{ data.double }}</h4>
+  <button @click="data.increase">^=>+1</button>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import { ref, computed, reactive,toRefs } from "vue";
 
+interface DataProps {
+  count: number;
+  increase: () => void;
+  double: number;
+}
+
 export default defineComponent({
   name: "App",
   setup() {
-    // ref一般使用原始类型
-    const count = ref(0);
-    const increase = () => {
-      count.value++;
-    }
-    const double = computed(()=>{
-      return count.value * 2;
-    });
+
+    const data: DataProps = reactive({
+      count: 0, 
+      increase: () =>  {
+        data.count++; // 这里不用.value
+      },
+      double: computed(()=>{
+        return data.count * 2;
+      })
+    })
     return {
-      // 需要导出后才能在模板中使用
-      count, increase, double
+      // 不能在这里把响应式的对象直接展开
+      data
     };
   },
 });
