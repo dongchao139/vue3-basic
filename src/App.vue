@@ -1,8 +1,8 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <h1>{{ data.count }}</h1>
-  <h4>{{ data.double }}</h4>
-  <button @click="data.increase">^=>+1</button>
+  <h1>{{ count }}</h1>
+  <h4>{{ double }}</h4>
+  <button @click="increase">^=>+1</button>
 </template>
 
 <script lang="ts">
@@ -27,10 +27,11 @@ export default defineComponent({
       double: computed(()=>{
         return data.count * 2;
       })
-    })
+    });
+    // 将响应式对象转换为ref对象
+    const refData = toRefs(data);
     return {
-      // 不能在这里把响应式的对象直接展开
-      data
+      ...refData
     };
   },
 });
