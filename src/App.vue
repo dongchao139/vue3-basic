@@ -10,11 +10,13 @@
     </li>
   </ul>
   <h4>{{ person.name }}</h4>
+  <hello-world></hello-world>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import { ref, computed, reactive, toRefs } from "vue";
+import HelloWorld from "./components/HelloWorld.vue";
 
 interface DataProps {
   count: number;
@@ -39,6 +41,7 @@ interface DataProps {
  *  })
  */
 export default defineComponent({
+  components: { HelloWorld },
   name: "App",
   setup() {
     const data: DataProps = reactive({
@@ -49,7 +52,7 @@ export default defineComponent({
       double: computed(() => {
         return data.count * 2;
       }),
-      numbers: [0, 1, 2],
+      numbers: [0, 1],
       person: {},
     });
     data.numbers[0] = 5;
