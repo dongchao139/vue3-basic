@@ -4,11 +4,11 @@
     <span>{{ count }}</span> - <span>{{ double }}</span>
   </h1>
   <button @click="increase">^=>+1</button>
-  <ul>
+  <!-- <ul>
     <li v-for="number in numbers" :key="number">
       <h1>{{ number }}</h1>
     </li>
-  </ul>
+  </ul> -->
   <h4>{{ person.name }}</h4>
   <hello-world></hello-world>
 </template>
