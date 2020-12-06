@@ -4,6 +4,9 @@
   <h3>{{greetings}}</h3>
   <button @click="upateGreeting">greeting</button>
   <h3>x: {{x}} y: {{y}}</h3>
+
+  <h3 v-if="loading">Loading...</h3>
+  <img v-if="loaded" :src="result.message">
 </template>
 
 <script lang="ts">
@@ -13,7 +16,7 @@ import {
 } from "vue";
 import {test} from '../scripts/test';
 import useMousePosition from '../hooks/useMousePosition';
-
+import useURLLoader from '../hooks/useURLLoader';
 /**
  * Vue3 生命周期
  * beforeCreate  -> use setup()
@@ -58,12 +61,17 @@ export default defineComponent({
       console.log('new value ', newValue);
     });
     const {x, y} = useMousePosition();
+
+    const {loading,loaded,result,error} = 
+      useURLLoader('https://dog.ceo/api/breeds/image/random');
+
     return {
       count,
       greetings,
       upateGreeting,
       onClick,
-      x, y
+      x, y,
+      loading, loaded, result, error
     };
   },
 });
