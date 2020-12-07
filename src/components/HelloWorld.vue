@@ -14,7 +14,6 @@ import {
   defineComponent, onMounted, onUpdated, 
   reactive, ref,watch, onUnmounted
 } from "vue";
-import {test} from '../scripts/test';
 import useMousePosition from '../hooks/useMousePosition';
 import useURLLoader from '../hooks/useURLLoader';
 /**
@@ -34,11 +33,12 @@ import useURLLoader from '../hooks/useURLLoader';
  * onRenderTracked
  * onRenderTriggered
  */
+interface DogResult {
+  message: string;
+  status: string;
+}
 export default defineComponent({
   setup() {
-    test((n: string) => {
-      console.log(n);
-    });
     onUpdated(() => {
       console.log("updated");
     });
@@ -52,7 +52,7 @@ export default defineComponent({
     };
     const data = reactive({
       num: 1
-    })
+    });
     // 在watch函数中处理副作用的操作
     // watch中监听的必须是响应式对象、ref、getter函数或者此类的数组
     watch([greetings, () => data.num ], (newValue, oldValue) => {
@@ -63,8 +63,12 @@ export default defineComponent({
     const {x, y} = useMousePosition();
 
     const {loading,loaded,result,error} = 
-      useURLLoader('https://dog.ceo/api/breeds/image/random');
-
+      useURLLoader<DogResult>('https://dog.ceo/api/breeds/image/random');
+    watch(result, () => {
+      if (result && result.value) {
+        console.log(result.value.message);
+      }
+    });
     return {
       count,
       greetings,

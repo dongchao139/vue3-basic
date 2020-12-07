@@ -13,6 +13,6 @@ export default function useMousePosition () {
     });
     onUnmounted(() => {
       document.removeEventListener('click', updateMouse);
-    })
+    });
     return {x,y};
 }
