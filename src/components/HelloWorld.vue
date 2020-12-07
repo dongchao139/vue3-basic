@@ -7,6 +7,7 @@
 
   <h3 v-if="loading">Loading...</h3>
   <img v-if="loaded" :src="result.message">
+  <modal :isOpen="open" @close-modal="onModalClose">My Modal!!!</modal>
 </template>
 
 <script lang="ts">
@@ -16,6 +17,7 @@ import {
 } from "vue";
 import useMousePosition from '../hooks/useMousePosition';
 import useURLLoader from '../hooks/useURLLoader';
+import Modal from "./Modal.vue";
 /**
  * Vue3 生命周期
  * beforeCreate  -> use setup()
@@ -38,6 +40,7 @@ interface DogResult {
   status: string;
 }
 export default defineComponent({
+  components:{ Modal },
   setup() {
     onUpdated(() => {
       console.log("updated");
@@ -69,13 +72,18 @@ export default defineComponent({
         console.log(result.value.message);
       }
     });
+    const open = ref(true);
+    const onModalClose = () => {
+      open.value = false;
+    }
     return {
       count,
       greetings,
       upateGreeting,
       onClick,
       x, y,
-      loading, loaded, result, error
+      loading, loaded, result, error,
+      open, onModalClose
     };
   },
 });
