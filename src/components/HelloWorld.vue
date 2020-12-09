@@ -9,8 +9,10 @@
     <Suspense> slots expect a single root node.
     -->
     <template #default>
-      <!-- <async-show /> -->
-      <dog-show />
+      <div>
+        <async-show />
+        <dog-show />
+      </div>
     </template>
     <template #fallback>
       <h1>content is loading</h1>
@@ -57,7 +59,7 @@ export default defineComponent({
   components:{ 
     // Modal,
     DogShow,
-    // AsyncShow
+    AsyncShow
   },
   setup() {
     onUpdated(() => {
