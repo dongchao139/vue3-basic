@@ -17,6 +17,7 @@ export default defineComponent({
   },
   setup(props, context) {
       function close() {
+        // vue2: this.$emit('xxx',yyy)
           context.emit('close-modal', {type: 'close'});
       }
       return {
