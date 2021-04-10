@@ -5,7 +5,6 @@
 import {defineComponent} from 'vue'
 export default defineComponent({
   setup() {
-
     return new Promise((resolve,reject)=>{
       setTimeout(()=>{
         return resolve({
