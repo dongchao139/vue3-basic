@@ -7,6 +7,10 @@
 </template>
 
 <script lang="js">
+/**
+ * v-bind
+ * v-model
+ */
 export default {
   name: "App1",
   data() {

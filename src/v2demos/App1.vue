@@ -5,6 +5,14 @@
 </template>
 
 <script lang="js">
+/**
+ * data
+ * methods
+ *
+ * v-text
+ * v-html
+ * v-on
+ */
 export default {
   name: "App1",
   data() {

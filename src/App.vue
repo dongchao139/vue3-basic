@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { ref, computed, reactive, toRefs } from "vue";
+import { computed, reactive, toRefs } from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
 
 interface DataProps {

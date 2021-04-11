@@ -18,6 +18,16 @@
 import TodoItem from './TodoItem.vue';
 import {defineComponent} from 'vue';
 
+/**
+ * components
+ *
+ * 子组件：
+ *  props:[<参数名>]
+ *  this.$emit("delete-item", this.item)
+ * 父组件：
+ *  v-bind:<参数名>
+ *  v-on:<自定义事件>
+ */
 export default defineComponent({
   name: "App1",
   components: {

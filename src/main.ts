@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import App4 from './v2demos/App4.vue'
+import App from './demos/App.vue'
 
 /**
  * Vue3新特性：
@@ -40,4 +40,4 @@ import App4 from './v2demos/App4.vue'
  * app.config.gloalProperties.customProperty = () => {}
  * app.mount('#app')
  */
-createApp(App4).mount('#app')
+createApp(App).mount('#app')

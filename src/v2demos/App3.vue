@@ -7,6 +7,9 @@
 </template>
 
 <script lang="js">
+/**
+ * computed
+ */
 export default {
   name: "App1",
   data() {
