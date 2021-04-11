@@ -45,5 +45,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
+ul {
+  padding-left: 0;
+}
 </style>
